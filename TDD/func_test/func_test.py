@@ -19,7 +19,7 @@ class NewVisitorTest(unittest.TestCase):
         #  Посещение главной страницы
         self.browser.get('http://127.0.0.1:8000/')
         # проверка на наличие нужного заголовка
-        self.assertIn('asdjklasj', self.browser.title, 'Failure')
+        self.assertIn('To-do', self.browser.title, 'Failure')
 
 
 
