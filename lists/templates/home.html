@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-do</title>
+</head>
+    <body>
+        <h1>To-do</h1>
+        <form action="" method="POST">
+             <input type="text" name="item_text" id="new_item" placeholder="Enter to-do item">
+            {% csrf_token %}
+        </form>
+
+
+    <table id="list_item">
+        <tr>
+            <td>{{ new_item_text }}</td>
+        </tr>
+    </table>
+    </body>
+</html>

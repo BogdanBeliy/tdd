@@ -23,17 +23,19 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-do', self.browser.title, 'Failure')
         # find headertext h1
         header_text = self.browser.find_element_by_tag_name('h1')
-        self.assertIn('To-do', header_text)
+        self.assertIn('To-do', header_text.text)
         # send word in input
         input_box = self.browser.find_element_by_id('new_item')
         self.assertEqual(input_box.get_attribute('placeholder'), 'Enter to-do item')
-        input_box.send_keys('Купить носки')
+        input_box.send_keys('Оплатить')
         time.sleep(2)
         input_box.send_keys(Keys.ENTER)
+        time.sleep(10)
         table = self.browser.find_element_by_id('list_item')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(any(row.text == 'Купить носки' for row in rows))
-        self.fail('Close test')
+        self.assertIn('Оплатить', [row.text for row in table.find_elements_by_tag_name('tr')])
+
+    def tearDown(self):
+        print('test is finish')
 
 
 
