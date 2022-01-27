@@ -9,9 +9,9 @@ class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
         ''' install test '''
-        self.options = Options()
-        self.options.add_argument('--headless')
-        self.browser = webdriver.Firefox(options=self.options)
+        # self.options = Options()
+        # self.options.add_argument('--headless')
+        self.browser = webdriver.Firefox()
 
 
     def test_see_main_page(self):
@@ -34,7 +34,9 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('list_item')
         self.assertIn('Оплатить', [row.text for row in table.find_elements_by_tag_name('tr')])
 
+
     def tearDown(self):
+        self.browser.close()
         print('test is finish')
 
 
